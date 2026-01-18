@@ -1,4 +1,3 @@
-"use strict";
 /**function identity<T>(arg: T): T {
  return arg;
  }
@@ -11,7 +10,9 @@
  console.log(identity('Asilbek'));
  console.log(identity([2, 3, 4, 5]));*/
 class ShoppingCart {
-    items = [];
+    constructor() {
+        this.items = [];
+    }
     addItem(item) {
         this.items.push(item);
     }
@@ -37,4 +38,5 @@ const userResponse = {
     data: { name: "Asilbek" }
 };
 console.log(userResponse);
+export {};
 //# sourceMappingURL=fourth.js.map

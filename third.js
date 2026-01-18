@@ -1,4 +1,3 @@
-"use strict";
 // OOP
 /**class Person {
  firstname: string;
@@ -16,7 +15,6 @@
 
  const person = new Person("Asilbek", 20);
  console.log(person.greet());*/
-Object.defineProperty(exports, "__esModule", { value: true });
 /**class Person {
  public firstname: string;
  protected nationality: string;
@@ -60,8 +58,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  const engineer = new Engineer('Asilbek', 20, 'Uzbek', ["JavaScript", "Typescript"]);
  console.log(engineer);*/
 class Person {
-    firstname;
-    age;
     constructor(firstname, age) {
         this.firstname = firstname;
         this.age = age;
@@ -71,9 +67,9 @@ class Person {
     }
 }
 class Engineer extends Person {
-    technologies = [];
     constructor(firstname, age, technologies) {
         super(firstname, age);
+        this.technologies = [];
         this.technologies = technologies;
     }
     getName() {
@@ -81,7 +77,6 @@ class Engineer extends Person {
     }
 }
 class Scientist extends Person {
-    researches;
     constructor(firstname, age, researches) {
         super(firstname, age);
         this.researches = researches;
@@ -96,4 +91,5 @@ const people = [engineer, scentist];
 for (const p of people) {
     console.log(p.getName());
 }
+export {};
 //# sourceMappingURL=third.js.map

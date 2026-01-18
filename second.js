@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function add(a, b) {
     return a + b;
 }
@@ -36,4 +34,5 @@ function updatePerson(person) {
     person.age = 20; // True
     // person.id = 1234 //We can't change
 }
+export {};
 //# sourceMappingURL=second.js.map
