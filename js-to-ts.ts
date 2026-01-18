@@ -1,32 +1,46 @@
+interface CartItem {
+    quantity: number;
+    price: number;
+}
+
 class ShoppingCart {
-    private items: Map<string, number>;
+    private items = new Map<string, CartItem>();
 
-    constructor() {
-        this.items = new Map<string, number>();
-    }
+    addItem(productTitle: string, quantity: number, price: number): void {
+        const existingItem = this.items.get(productTitle);
 
-    addItem(productTitle: string, quantity: number): void {
-        if (this.items.has(productTitle)) {
-            let currentQuantity = this.items.get(productTitle) || 0;
-            currentQuantity += quantity;
-            this.items.set(productTitle, currentQuantity);
+        if (existingItem) {
+            this.items.set(productTitle, {
+                quantity: existingItem.quantity + quantity,
+                price: price
+            });
         } else {
-            this.items.set(productTitle, quantity);
+            this.items.set(productTitle, { quantity, price });
         }
     }
 
     getItemCount(itemName: string): number {
-        return this.items.get(itemName) || 0;
+        return this.items.get(itemName)?.quantity ?? 0;
+    }
+
+    getTotalPrice(): number {
+        let total = 0;
+        this.items.forEach((item) => {
+            total += item.quantity * item.price;
+        });
+        return total;
     }
 }
 
 function processShoppingCart() {
     const shoppingCart = new ShoppingCart();
-    shoppingCart.addItem("Apple", 30);
-    shoppingCart.addItem("Orange", 20);
-    shoppingCart.addItem("Apple", 10);
-    console.log(`Number of apples: ${shoppingCart.getItemCount("Apple")}`);
-    console.log(`Number of oranges: ${shoppingCart.getItemCount("Orange")}`);
+
+    shoppingCart.addItem("Apple", 30, 1500);
+    shoppingCart.addItem("Orange", 20, 2000);
+    shoppingCart.addItem("Apple", 10, 1500);
+
+    console.log(`Olmalarning umumiy soni: ${shoppingCart.getItemCount("Apple")}`);
+    console.log(`Savatchaning umumiy summasi: ${shoppingCart.getTotalPrice()} so'm`);
 }
 
 processShoppingCart();
