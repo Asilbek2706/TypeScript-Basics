@@ -16,6 +16,7 @@
 
  const person = new Person("Asilbek", 20);
  console.log(person.greet());*/
+Object.defineProperty(exports, "__esModule", { value: true });
 /**class Person {
  public firstname: string;
  protected nationality: string;
