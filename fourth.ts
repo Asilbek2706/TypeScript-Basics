@@ -53,3 +53,22 @@ const product1: XProduct = {
 const shoppingCart = new ShoppingCart<XProduct>();
 shoppingCart.addItem(product1);
 // shoppingCart.calculateTotal();
+
+function pair<K, V>(key: K, value: V): string {
+    return `${key}: ${value}`;
+}
+
+console.log(pair<string, number>("Yosh", 25));
+
+
+interface ResponseData<T> {
+    status: number;
+    data: T;
+}
+
+const userResponse: ResponseData<{name: string}> = {
+    status: 200,
+    data: { name: "Asilbek" }
+};
+
+console.log(userResponse);
